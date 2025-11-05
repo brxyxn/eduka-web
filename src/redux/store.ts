@@ -1,10 +1,18 @@
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from "redux-persist";
-import { counterSlice } from "@/redux/counter/counter-slice";
-import storage from "@/redux/storage";
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from "redux-persist"
+import { counterSlice } from "@/redux/counter/counter-slice"
+import storage from "@/redux/storage"
+import { combineReducers, configureStore } from "@reduxjs/toolkit"
 
 const persistConfig = {
   key: "root",

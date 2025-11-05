@@ -14,11 +14,10 @@
 //          [name]-slice.ts
 //          [name]-thunks.ts
 //          [name]-types.ts
-import { constants as fsConstants } from "node:fs";
-import { access, mkdir, writeFile } from "node:fs/promises";
-import path from "node:path";
-import process from "node:process";
-
+import { constants as fsConstants } from "node:fs"
+import { access, mkdir, writeFile } from "node:fs/promises"
+import path from "node:path"
+import process from "node:process"
 
 function toKebab(str) {
   return str
