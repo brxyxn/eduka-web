@@ -1,15 +1,14 @@
 import { createAppSlice } from "@/redux/create-app-slice"
-import { AppThunk } from "@/redux/store"
+import { AppThunk, RootSliceState, SliceStatus } from "@/redux/types"
 import { PayloadAction } from "@reduxjs/toolkit"
 
-export interface CounterSliceState {
-  value: number
-  status: "idle" | "loading" | "failed"
-}
+type State = number
+
+export type CounterSliceState = RootSliceState<State>
 
 const initialState: CounterSliceState = {
-  value: 0,
-  status: "idle",
+  state: 0,
+  status: SliceStatus.IDLE,
 }
 
 // If you are not using async thunks you can use the standalone `createSlice`.
@@ -24,18 +23,18 @@ export const counterSlice = createAppSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.value += 1
+      state.state += 1
     }),
     decrement: create.reducer((state) => {
-      state.value -= 1
+      state.state -= 1
     }),
     setValue: create.reducer((state, action: PayloadAction<number>) => {
-      state.value = action.payload
+      state.state = action.payload
     }),
     // Use the `PayloadAction` type to declare the contents of `action.payload`
     incrementByAmount: create.reducer(
       (state, action: PayloadAction<number>) => {
-        state.value += action.payload
+        state.state += action.payload
       }
     ),
     // The function below is called a thunk and allows us to perform async logic. It
@@ -56,7 +55,7 @@ export const counterSlice = createAppSlice({
     //     },
     //     fulfilled: (state, action) => {
     //       state.status = "idle"
-    //       state.value += action.payload
+    //       state.state += action.payload
     //     },
     //     rejected: (state) => {
     //       console.log(state)
@@ -68,7 +67,7 @@ export const counterSlice = createAppSlice({
   // You can define your selectors here. These selectors receive the slice
   // state as their first argument.
   selectors: {
-    selectCount: (counter) => counter.value,
+    selectCount: (counter) => counter.state,
     selectStatus: (counter) => counter.status,
   },
 })

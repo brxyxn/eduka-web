@@ -1,23 +1,10 @@
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  persistReducer,
-  persistStore,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
-} from "redux-persist"
-import { counterSlice } from "@/redux/counter/counter-slice"
-import storage from "@/redux/storage"
-import {
-  Action,
-  combineReducers,
-  configureStore,
-  ThunkAction,
-} from "@reduxjs/toolkit"
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from "redux-persist";
+import { counterSlice } from "@/redux/counter/counter-slice";
+import storage from "@/redux/storage";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
 
 const persistConfig = {
   key: "root",
@@ -27,12 +14,11 @@ const persistConfig = {
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
 // export const rootReducer = combineSlices(counterSlice, quotesApiSlice);
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   [counterSlice.reducerPath]: counterSlice.reducer,
   // [quotesApiSlice.reducerPath]: quotesApiSlice.reducer,
 })
 // Infer the `RootState` type from the root reducer
-export type RootState = ReturnType<typeof rootReducer>
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
@@ -56,14 +42,3 @@ export const persistor = persistStore(store)
 export const makeStore = () => {
   return store
 }
-
-// Infer the return type of `makeStore`
-export type AppStore = ReturnType<typeof makeStore>
-// Infer the `AppDispatch` type from the store itself
-export type AppDispatch = AppStore["dispatch"]
-export type AppThunk<ThunkReturnType = void> = ThunkAction<
-  ThunkReturnType,
-  RootState,
-  unknown,
-  Action
->
