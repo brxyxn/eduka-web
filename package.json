@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "slice:add": "node scripts/add-slice.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "6.3.1",
