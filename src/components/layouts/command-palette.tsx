@@ -12,18 +12,30 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command"
-import { SidebarHeader } from "@/components/ui/sidebar"
+import { Kbd } from "@/components/ui/kbd"
 import { Search } from "lucide-react"
 import { SidebarData } from "./types"
 
 interface NavHeaderProps {
   data: SidebarData
-  isCollapsed: boolean
 }
 
-export function NavHeader({ data, isCollapsed }: NavHeaderProps) {
+export function CommandPalette({ data }: NavHeaderProps) {
   const [open, setOpen] = React.useState(false)
 
+  // Handle Cmd or Ctrl key to display shortcut in Kbd component
+  const [modifierKey, setModifierKey] = React.useState("⌘")
+
+  useEffect(() => {
+    const modifierKeyPrefix =
+      navigator.platform.startsWith("Mac") || navigator.platform === "iPhone"
+        ? "⌘" // command key
+        : "Ctrl" // control key
+    console.log("modifierKeyPrefix", { platform: navigator.platform })
+    setModifierKey(modifierKeyPrefix)
+  }, [])
+
+  // Toggle command palette with Cmd+K or Ctrl+K
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -37,33 +49,18 @@ export function NavHeader({ data, isCollapsed }: NavHeaderProps) {
 
   return (
     <>
-      <SidebarHeader>
-        <div
-          className="flex items-center justify-between px-2 pb-0 pt-3 cursor-pointer"
-          onClick={() => setOpen(true)}
-        >
-          <div className="flex items-center flex-1 gap-3">
-            <Search
-              className={cn(
-                "size-5 text-muted-foreground",
-                isCollapsed && "text-primary"
-              )}
-            />
-            {!isCollapsed && (
-              <span className="text-sm text-muted-foreground font-normal">
-                Search
-              </span>
-            )}
-          </div>
-          {!isCollapsed && (
-            <div className="flex items-center justify-center px-2 py-1 border border-border rounded-md">
-              <kbd className="text-muted-foreground inline-flex font-[inherit] text-xs font-medium">
-                <span className="opacity-70">⌘K</span>
-              </kbd>
-            </div>
-          )}
+      <div
+        className="flex items-center justify-between px-2 cursor-pointer border rounded-md py-1 bg-white"
+        onClick={() => setOpen(true)}
+      >
+        <div className="flex items-center flex-1 gap-3 w-28">
+          <Search className={cn("size-5 text-muted-foreground")} />
+          <span className="text-sm text-muted-foreground font-normal">
+            {"Search"}
+          </span>
         </div>
-      </SidebarHeader>
+        <Kbd>{modifierKey} + K</Kbd>
+      </div>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Search everything..." />

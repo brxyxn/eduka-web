@@ -31,7 +31,7 @@ export function NotificationsPopover({
           <BellIcon className="size-5" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent side="right" className="w-80 my-6">
+      <DropdownMenuContent side="bottom" align={"end"} className="w-80">
         <DropdownMenuLabel>Notifications</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {notifications.map(({ id, avatar, fallback, text, time }) => (

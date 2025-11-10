@@ -6,14 +6,17 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 
 export type MainNavProps = {
   items: NavItem[]
-  isCollapsed: boolean
 }
 
-export function MainNav({ items, isCollapsed }: MainNavProps) {
+export function MainNav({ items }: MainNavProps) {
+  const { state } = useSidebar()
+  const isCollapsed = state === "collapsed"
+
   return (
     <SidebarGroup>
       <SidebarMenu>
