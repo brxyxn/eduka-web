@@ -2,15 +2,17 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Create tables
 CREATE TABLE students (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     first_name TEXT NOT NULL,
     middle_name TEXT,
     last_name TEXT NOT NULL,
-    cui TEXT NOT NULL UNIQUE,
+    cui TEXT NOT NULL,
     date_of_birth DATE NOT NULL,
     gender TEXT NOT NULL CHECK (gender IN ('male', 'female', 'other')),
     nationality TEXT NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT NOW()
+    school_id UUID NOT NULL REFERENCES schools(id),
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    UNIQUE (cui, school_id)
 );
 
 CREATE TABLE guardians (
