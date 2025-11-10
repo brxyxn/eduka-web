@@ -7,6 +7,7 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarHeader,
 } from "@/components/ui/sidebar"
 import { IconSchool } from "@tabler/icons-react"
 import {
@@ -86,16 +87,9 @@ export default function AppSidebar() {
       variant={"inset"}
       className={"h-full absolute"}
     >
-      {/*<SidebarHeader*/}
-      {/*  className={cn(*/}
-      {/*    "flex md:pt-3.5",*/}
-      {/*    isCollapsed*/}
-      {/*      ? "flex-row items-center justify-between gap-y-4 md:flex-col md:items-start md:justify-start"*/}
-      {/*      : "flex-row items-center justify-between"*/}
-      {/*  )}*/}
-      {/*>*/}
-      {/*  <NavHeader data={sidebarData} isCollapsed={isCollapsed} />*/}
-      {/*</SidebarHeader>*/}
+      <SidebarHeader>
+        {/*// todo: add applications item to open the list of the apps in our suite*/}
+      </SidebarHeader>
       <SidebarContent>
         <MainNav items={sidebarData.mainNav} />
       </SidebarContent>
