@@ -1,3 +1,4 @@
+import unusedImports from "eslint-plugin-unused-imports";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
@@ -23,15 +24,14 @@ const eslintConfig = [
       "jest.config.mjs",
       "prettier.config.cjs",
       "src/redux/storage.ts",
+      "scripts/**",
     ],
   },
-  ...compat.extends(
-    "next/core-web-vitals",
-    "next/typescript",
-    "prettier",
-    "unused-imports"
-  ),
+  ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
   {
+    plugins: {
+      "unused-imports": unusedImports,
+    },
     languageOptions: {
       parserOptions: {
         project: ["./tsconfig.json"],
