@@ -200,32 +200,7 @@ export default function NewStudentEnrollmentPage() {
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <FormField
-                                            control={form.control}
-                                            name="gender"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>Gender</FormLabel>
-                                                    <FormControl>
-                                                        <RadioGroup
-                                                            onValueChange={field.onChange}
-                                                            value={field.value}
-                                                            className="flex gap-4"
-                                                        >
-                                                            {genders.map((gender) => (
-                                                                <div className="flex items-center space-x-2" key={gender.value}>
-                                                                    <RadioGroupItem value={gender.value} id={`gender-${gender.value}`} />
-                                                                    <FormLabel htmlFor={`gender-${gender.value}`} className="font-normal">
-                                                                        {gender.label}
-                                                                    </FormLabel>
-                                                                </div>
-                                                            ))}
-                                                        </RadioGroup>
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
+
 
                                         <FormField
                                             control={form.control}
@@ -235,6 +210,41 @@ export default function NewStudentEnrollmentPage() {
                                                     <FormLabel>Nationality</FormLabel>
                                                     <FormControl>
                                                         <Input {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="gender"
+                                            render={({ field }) => (
+                                                <FormItem className="space-y-3">
+                                                    <FormLabel>Gender</FormLabel>
+                                                    <FormControl>
+                                                        <RadioGroup
+                                                            onValueChange={field.onChange}
+                                                            defaultValue={field.value}
+                                                            className="grid grid-cols-3 gap-4"
+                                                        >
+                                                            {genders.map((gender) => (
+                                                                <div key={gender.value}>
+                                                                    <RadioGroupItem
+                                                                        value={gender.value}
+                                                                        id={`gender-${gender.value}`}
+                                                                        className="peer sr-only"
+                                                                    />
+                                                                    <FormLabel
+                                                                        htmlFor={`gender-${gender.value}`}
+                                                                        className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer"
+                                                                    >
+                                                                        <span className="text-sm font-medium">
+                                                                            {gender.label}
+                                                                        </span>
+                                                                    </FormLabel>
+                                                                </div>
+                                                            ))}
+                                                        </RadioGroup>
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
