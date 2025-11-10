@@ -132,7 +132,7 @@ export const AppBar = () => {
         <div className={"flex gap-2 items-center"}>
           <SidebarTrigger />
 
-          <CommandPalette data={sidebarData} isCollapsed={isCollapsed} />
+          <CommandPalette data={sidebarData} />
         </div>
       </div>
 
