@@ -1,7 +1,5 @@
 "use client"
 
-import * as React from "react"
-import { useEffect } from "react"
 import {
   CommandDialog,
   CommandEmpty,
@@ -12,14 +10,18 @@ import {
   CommandSeparator,
 } from "@/components/ui/command"
 import { SidebarHeader } from "@/components/ui/sidebar"
+import { cn } from "@/lib/utils"
 import { Search } from "lucide-react"
+import * as React from "react"
+import { useEffect } from "react"
 import { SidebarData } from "./types"
 
 interface NavHeaderProps {
   data: SidebarData
+  isCollapsed: boolean
 }
 
-export function NavHeader({ data }: NavHeaderProps) {
+export function NavHeader({ data, isCollapsed }: NavHeaderProps) {
   const [open, setOpen] = React.useState(false)
 
   useEffect(() => {
@@ -41,16 +43,25 @@ export function NavHeader({ data }: NavHeaderProps) {
           onClick={() => setOpen(true)}
         >
           <div className="flex items-center flex-1 gap-3">
-            <Search className="h-4 w-4 text-muted-foreground" />
-            <span className="text-sm text-muted-foreground font-normal">
-              Search
-            </span>
+            <Search
+              className={cn(
+                "size-5 text-muted-foreground",
+                isCollapsed && "text-primary"
+              )}
+            />
+            {!isCollapsed && (
+              <span className="text-sm text-muted-foreground font-normal">
+                Search
+              </span>
+            )}
           </div>
-          <div className="flex items-center justify-center px-2 py-1 border border-border rounded-md">
-            <kbd className="text-muted-foreground inline-flex font-[inherit] text-xs font-medium">
-              <span className="opacity-70">⌘K</span>
-            </kbd>
-          </div>
+          {!isCollapsed && (
+            <div className="flex items-center justify-center px-2 py-1 border border-border rounded-md">
+              <kbd className="text-muted-foreground inline-flex font-[inherit] text-xs font-medium">
+                <span className="opacity-70">⌘K</span>
+              </kbd>
+            </div>
+          )}
         </div>
       </SidebarHeader>
 

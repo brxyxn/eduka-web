@@ -1,5 +1,6 @@
-// import { IconName } from "lucide-react/dynamic"
+// Define types for user configuration and navigation items
 
+// used in the application sidebar for navigation items
 type NavItem = {
   title: string
   url: string
@@ -8,6 +9,7 @@ type NavItem = {
   tooltip?: string
 }
 
+// used in the application sidebar for user info and settings
 type User = {
   id: string
   name: string
@@ -15,6 +17,7 @@ type User = {
   avatar: string
 }
 
+// todo: remove this, update all references to use SidebarData instead
 type UserConfigData = {
   user: User
   navMain: NavItem[]
@@ -25,9 +28,10 @@ type UserConfigData = {
 type Team = {
   name: string
   logo: ElementType
-  plan: string
+  plan: string // update this for more strict typing later
 }
 
+// This is used in the notification dropdown items
 type NotificationItem = {
   id: string
   avatar: string
@@ -35,16 +39,4 @@ type NotificationItem = {
   text: string
   description?: string
   time?: string
-}
-
-type Route = {
-  id: string
-  title: string
-  icon?: ReactNode
-  link: string
-  subs?: {
-    title: string
-    link: string
-    icon?: ReactNode
-  }[]
 }

@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { Logo } from "@/components/layouts/logo"
 import { MainNav } from "@/components/layouts/main-nav"
 import { NavHeader } from "@/components/layouts/nav-header"
@@ -16,16 +15,17 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
+import { IconSchool } from "@tabler/icons-react"
+import { motion } from "framer-motion"
 import {
-  IconCalendar,
-  IconChalkboard,
-  IconCheckupList,
-  IconLayoutDashboard,
-  IconNotebook,
-  IconSchool,
-  IconUsers,
-  IconWallet,
-} from "@tabler/icons-react"
+  CalendarClock,
+  ClipboardList,
+  HandCoins,
+  LayoutDashboard,
+  NotebookText,
+  Presentation,
+  UsersRound,
+} from "lucide-react"
 
 // for now all our users will have access to everything in the sidebar
 // this will be changed later when we implement the subscription plans and roles
@@ -40,42 +40,42 @@ const sidebarData: SidebarData = {
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: IconLayoutDashboard,
+      icon: LayoutDashboard,
     },
     {
       title: "Students",
       url: "/students",
-      icon: IconUsers,
+      icon: UsersRound,
     },
     {
       title: "Teachers",
       url: "/teachers",
-      icon: IconUsers,
+      icon: UsersRound,
     },
     {
       title: "Classrooms",
       url: "/classrooms",
-      icon: IconChalkboard,
+      icon: Presentation,
     },
     {
       title: "Subjects",
       url: "/subjects",
-      icon: IconNotebook,
+      icon: NotebookText,
     },
     {
       title: "Routine",
       url: "/routine",
-      icon: IconCalendar,
+      icon: CalendarClock,
     },
     {
       title: "Attendance",
       url: "/attendance",
-      icon: IconCheckupList,
+      icon: ClipboardList,
     },
     {
       title: "Payments",
       url: "/payments",
-      icon: IconWallet,
+      icon: HandCoins,
     },
   ],
 }
@@ -149,9 +149,8 @@ export default function AppSidebar() {
         </motion.div>
       </SidebarHeader>
       <SidebarContent>
-        <NavHeader data={sidebarData} />
-        {/*<Navigation routes={dashboardRoutes} />*/}
-        <MainNav items={sidebarData.mainNav} />
+        <NavHeader data={sidebarData} isCollapsed={isCollapsed} />
+        <MainNav items={sidebarData.mainNav} isCollapsed={isCollapsed} />
       </SidebarContent>
       <SidebarFooter>
         <TeamSwitcher teams={teams} />

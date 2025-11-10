@@ -6,12 +6,14 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { cn } from "@/lib/utils"
 
 export type MainNavProps = {
   items: NavItem[]
+  isCollapsed: boolean
 }
 
-export function MainNav({ items }: MainNavProps) {
+export function MainNav({ items, isCollapsed }: MainNavProps) {
   return (
     <SidebarGroup>
       <SidebarMenu>
@@ -21,7 +23,11 @@ export function MainNav({ items }: MainNavProps) {
           return (
             <SidebarMenuItem key={item.url}>
               <SidebarMenuButton tooltip={item.title}>
-                {Icon && <Icon className="mr-2 h-4 w-4" />}
+                {Icon && (
+                  <Icon
+                    className={cn("!size-5", isCollapsed ? "mr-0" : "mr-2")}
+                  />
+                )}
                 <span>{item.title}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
