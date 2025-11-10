@@ -34,16 +34,16 @@ CREATE TABLE guardian_phones (
     type TEXT NOT NULL CHECK (type IN ('cellphone', 'home', 'other')),
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
-
 CREATE TABLE addresses (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     student_id UUID REFERENCES students(id) ON DELETE CASCADE,
     address_line1 TEXT NOT NULL,
     address_line2 TEXT,
     zone INTEGER NOT NULL,
     state TEXT NOT NULL,
     city TEXT NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT NOW()
+    country_code TEXT NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
 );
 
 CREATE TABLE emergency_contacts (
