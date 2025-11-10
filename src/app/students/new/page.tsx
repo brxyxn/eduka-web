@@ -219,16 +219,16 @@ export default function NewStudentEnrollmentPage() {
                                             control={form.control}
                                             name="gender"
                                             render={({ field }) => (
-                                                <FormItem className="space-y-3">
+                                                <FormItem className="space-y-2">
                                                     <FormLabel>Gender</FormLabel>
                                                     <FormControl>
                                                         <RadioGroup
                                                             onValueChange={field.onChange}
                                                             defaultValue={field.value}
-                                                            className="grid grid-cols-3 gap-4"
+                                                            className="grid grid-cols-3 gap-2"
                                                         >
                                                             {genders.map((gender) => (
-                                                                <div key={gender.value}>
+                                                                <div key={gender.value} className="min-w-0">
                                                                     <RadioGroupItem
                                                                         value={gender.value}
                                                                         id={`gender-${gender.value}`}
@@ -236,11 +236,9 @@ export default function NewStudentEnrollmentPage() {
                                                                     />
                                                                     <FormLabel
                                                                         htmlFor={`gender-${gender.value}`}
-                                                                        className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer"
+                                                                        className="flex items-center justify-center rounded-md border-2 border-muted bg-popover h-9 px-3 text-xs hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer leading-none"
                                                                     >
-                                                                        <span className="text-sm font-medium">
-                                                                            {gender.label}
-                                                                        </span>
+                                                                        <span className="font-medium truncate">{gender.label}</span>
                                                                     </FormLabel>
                                                                 </div>
                                                             ))}
