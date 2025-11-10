@@ -32,7 +32,7 @@ const sidebarData: SidebarData = {
   mainNav: [
     {
       title: "Dashboard",
-      url: "/dashboard",
+      url: "/",
       icon: LayoutDashboard,
     },
     {

@@ -103,7 +103,6 @@ export const AppBar = () => {
   return (
     <div
       className={cn("group peer flex items-center w-full p-4")}
-      // className="group peer text-sidebar-foreground hidden md:block"
       data-state={state}
       data-collapsible={isCollapsed ? "icon" : ""}
       data-variant={"icon"}

@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { cn } from "@/lib/utils"
 import {
   SidebarGroup,
@@ -25,13 +26,15 @@ export function MainNav({ items }: MainNavProps) {
 
           return (
             <SidebarMenuItem key={item.url}>
-              <SidebarMenuButton tooltip={item.title}>
-                {Icon && (
-                  <Icon
-                    className={cn("!size-5", isCollapsed ? "mr-0" : "mr-2")}
-                  />
-                )}
-                <span>{item.title}</span>
+              <SidebarMenuButton tooltip={item.title} asChild>
+                <Link href={item.url}>
+                  {Icon && (
+                    <Icon
+                      className={cn("!size-5", isCollapsed ? "mr-0" : "mr-2")}
+                    />
+                  )}
+                  <span>{item.title}</span>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           )
