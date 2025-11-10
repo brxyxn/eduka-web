@@ -64,7 +64,6 @@ module.exports = {
     "^@ui/(.*)$",
     "^@/components/(.*)$",
     "^@/*",
-    "^@repo/(.*)$",
     "^lucide-react",
     "^@icons*",
     "^@tabler/(.*)$",
@@ -73,6 +72,5 @@ module.exports = {
   plugins: [
     "prettier-plugin-tailwindcss",
     "@trivago/prettier-plugin-sort-imports",
-    "prettier-plugin-organize-imports",
   ],
 };

@@ -25,7 +25,12 @@ const eslintConfig = [
       "src/redux/storage.ts",
     ],
   },
-  ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
+  ...compat.extends(
+    "next/core-web-vitals",
+    "next/typescript",
+    "prettier",
+    "unused-imports"
+  ),
   {
     languageOptions: {
       parserOptions: {
@@ -55,6 +60,7 @@ const eslintConfig = [
           destructuredArrayIgnorePattern: "^_",
         },
       ],
+      "unused-imports/no-unused-imports": "error",
     },
   },
 ];
