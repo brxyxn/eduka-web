@@ -1,5 +1,8 @@
 "use client"
 
+import * as React from "react"
+import { useEffect } from "react"
+import { cn } from "@/lib/utils"
 import {
   CommandDialog,
   CommandEmpty,
@@ -10,10 +13,7 @@ import {
   CommandSeparator,
 } from "@/components/ui/command"
 import { SidebarHeader } from "@/components/ui/sidebar"
-import { cn } from "@/lib/utils"
 import { Search } from "lucide-react"
-import * as React from "react"
-import { useEffect } from "react"
 import { SidebarData } from "./types"
 
 interface NavHeaderProps {

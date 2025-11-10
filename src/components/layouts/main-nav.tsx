@@ -1,12 +1,12 @@
 "use client"
 
+import { cn } from "@/lib/utils"
 import {
   SidebarGroup,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { cn } from "@/lib/utils"
 
 export type MainNavProps = {
   items: NavItem[]

@@ -1,5 +1,7 @@
 "use client"
 
+import { motion } from "framer-motion"
+import { cn } from "@/lib/utils"
 import { Logo } from "@/components/layouts/logo"
 import { MainNav } from "@/components/layouts/main-nav"
 import { NavHeader } from "@/components/layouts/nav-header"
@@ -14,9 +16,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { cn } from "@/lib/utils"
 import { IconSchool } from "@tabler/icons-react"
-import { motion } from "framer-motion"
 import {
   CalendarClock,
   ClipboardList,
