@@ -3,10 +3,9 @@
 type NavItem = {
   title: string
   url: string
-  icon: IconName
+  icon: ElementType
   description?: string
   tooltip?: string
-  disabled?: boolean
 }
 
 type User = {
@@ -21,4 +20,31 @@ type UserConfigData = {
   navMain: NavItem[]
   reports: NavItem[]
   engineCareSettings: NavItem[]
+}
+
+type Team = {
+  name: string
+  logo: ElementType
+  plan: string
+}
+
+type NotificationItem = {
+  id: string
+  avatar: string
+  fallback: string
+  text: string
+  description?: string
+  time?: string
+}
+
+type Route = {
+  id: string
+  title: string
+  icon?: ReactNode
+  link: string
+  subs?: {
+    title: string
+    link: string
+    icon?: ReactNode
+  }[]
 }
