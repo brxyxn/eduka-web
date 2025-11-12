@@ -10,8 +10,8 @@ import {
   type FieldPath,
   type FieldValues,
 } from "react-hook-form"
-import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
+import { Label } from "@/components/ui/label"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
 
@@ -155,12 +155,12 @@ function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
 }
 
 export {
-  useFormField,
   Form,
-  FormItem,
-  FormLabel,
   FormControl,
   FormDescription,
-  FormMessage,
   FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  useFormField,
 }
