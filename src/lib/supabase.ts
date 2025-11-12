@@ -11,7 +11,7 @@ export type Tables = {
         first_name: string
         middle_name?: string
         last_name: string
-        cui: string
+        personal_id: string
         date_of_birth: string
         gender: 'male' | 'female' | 'other'
         nationality: string
@@ -21,7 +21,7 @@ export type Tables = {
         id: string
         student_id: string
         full_name: string
-        cui: string
+        personal_id: string
         date_of_birth: string
         email: string
         relation_to_student: string

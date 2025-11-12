@@ -11,7 +11,7 @@ export async function createStudentEnrollment(data: z.infer<typeof StudentEnroll
                 first_name: data.firstName,
                 middle_name: data.middleName,
                 last_name: data.lastName,
-                cui: data.cui,
+                personal_id: data.personalId,
                 date_of_birth: data.dateOfBirth,
                 gender: data.gender,
                 nationality: data.nationality,
@@ -29,7 +29,7 @@ export async function createStudentEnrollment(data: z.infer<typeof StudentEnroll
                 .insert({
                     student_id: student.id,
                     full_name: guardian.fullName,
-                    cui: guardian.cui,
+                    personal_id: guardian.personalId,
                     date_of_birth: guardian.dateOfBirth,
                     email: guardian.email,
                     relation_to_student: guardian.relationToStudent,

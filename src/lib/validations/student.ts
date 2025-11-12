@@ -7,7 +7,7 @@ const PhoneSchema = z.object({
 
 const GuardianFormSchema = z.object({
     fullName: z.string().min(1, "Full name is required"),
-    cui: z.string().min(1, "CUI is required"),
+    personalId: z.string().min(1, "Personal ID is required"),
     dateOfBirth: z.date(),
     email: z.string().email("Invalid email address"),
     phones: z.array(PhoneSchema).min(1, "At least one phone number is required"),
@@ -26,7 +26,7 @@ export const StudentEnrollmentSchema = z.object({
     firstName: z.string().min(1, "First name is required"),
     middleName: z.string().optional(),
     lastName: z.string().min(1, "Last name is required"),
-    cui: z.string().min(1, "CUI is required"),
+    personalId: z.string().min(1, "Personal ID is required"),
     dateOfBirth: z.date().nullable(),
     gender: z.enum(["male", "female", "other"]),
     nationality: z.string().min(1, "Nationality is required"),

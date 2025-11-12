@@ -63,7 +63,7 @@ export default function NewStudentEnrollmentPage() {
             guardians: [
                 {
                     fullName: "",
-                    cui: "",
+                    personalId: "",
                     dateOfBirth: undefined,
                     email: "",
                     phones: [{ number: "", type: "cellphone" }],
@@ -85,6 +85,7 @@ export default function NewStudentEnrollmentPage() {
 
     async function onSubmit(data: z.infer<typeof StudentEnrollmentSchema>) {
         try {
+            console.log("Submitting data:", data);
             const result = await createStudentEnrollment(data)
 
             if (!result.success) {
@@ -169,10 +170,10 @@ export default function NewStudentEnrollmentPage() {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <FormField
                                             control={form.control}
-                                            name="cui"
+                                            name="personalId"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel>CUI</FormLabel>
+                                                    <FormLabel>Personal ID (CUI)</FormLabel>
                                                     <FormControl>
                                                         <Input {...field} />
                                                     </FormControl>
@@ -282,10 +283,10 @@ export default function NewStudentEnrollmentPage() {
 
                                                         <FormField
                                                             control={form.control}
-                                                            name={`guardians.${index}.cui`}
+                                                            name={`guardians.${index}.personalId`}
                                                             render={({ field }) => (
                                                                 <FormItem>
-                                                                    <FormLabel>CUI</FormLabel>
+                                                                    <FormLabel>Personal ID (CUI)</FormLabel>
                                                                     <FormControl>
                                                                         <Input {...field} />
                                                                     </FormControl>
@@ -496,7 +497,7 @@ export default function NewStudentEnrollmentPage() {
                                                     ...guardians,
                                                     {
                                                         fullName: "",
-                                                        cui: "",
+                                                        personalId: "",
                                                         dateOfBirth: null,
                                                         email: "",
                                                         phones: [{ number: "", type: "cellphone" }],
